@@ -248,7 +248,7 @@ namespace Comet
 		internal void BindingPropertyChanged(INotifyPropertyRead bindingObject, string property, string fullProperty, object value)
 		{
 			var prop = property.Split('.').Last();
-			if (!State.UpdateValue(this, (bindingObject, property), fullProperty, value))
+			if (State == null || !State.UpdateValue(this, (bindingObject, property), fullProperty, value))
 				Reload(false);
 			else
 				ViewPropertyChanged(prop, value);
