@@ -29,6 +29,12 @@ namespace Comet.SourceGenerators
 			{
 				Parse(method, result);
 			}
+
+			var constructors = cd.Members.OfType<ConstructorDeclarationSyntax>().ToList();
+			foreach (var constructor in constructors)
+			{
+				Parse(constructor, result);
+			}
 			return result;
 		}
 
@@ -47,6 +53,41 @@ namespace Comet.SourceGenerators
 			}
 
 		}
+
+		public void Parse(ConstructorDeclarationSyntax md, ClassObject classObject)
+		{
+			// ConstructorDeclarationSyntax and MethodDeclarationSyntax both inherit from BaseMethodDeclarationSyntax so maybe combine this with above???
+			var body = md.Body?.Statements.Cast<SyntaxNode>().ToList() ?? new List<SyntaxNode> { md.ExpressionBody?.Expression };
+
+			// We need to find an assignment to the Body property
+			foreach (var node in body)
+			{
+				var assignment = GetBodyAssignment(node);
+				if (assignment != null)
+				{
+					ParseNode(assignment, classObject);
+				}
+			}
+
+			SyntaxNode GetBodyAssignment(SyntaxNode node) => node switch
+			{
+				ExpressionStatementSyntax ess => GetBodyAssignment(ess.Expression),
+				ReturnStatementSyntax rss => GetBodyAssignment(rss.Expression),
+				AssignmentExpressionSyntax assignment when IsBodyAssignment(assignment.Left) => assignment.Right,
+				_ => null
+			};
+
+			bool IsBodyAssignment(ExpressionSyntax left)
+			{
+				if (left is IdentifierNameSyntax id && id.Identifier.Text == "Body")
+				{
+					// TODO: use semantic model to make sure its the right Body property being assigned? ie, its the Body property from the View class
+					return true;
+				}
+				return false;
+			}
+		}
+
 
 		public class ClassObject
 		{
@@ -122,6 +163,10 @@ namespace Comet.SourceGenerators
 			else if(node is ParenthesizedExpressionSyntax pes)
 			{
 				ParseNode(pes.Expression, classObject);
+			}
+			else if (node is ParenthesizedLambdaExpressionSyntax ples)
+			{
+				ParseNode(ples.Body, classObject);
 			}
 			else
 			{
