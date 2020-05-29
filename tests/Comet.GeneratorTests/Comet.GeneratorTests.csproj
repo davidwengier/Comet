@@ -25,6 +25,9 @@
     <None Include="CodeParsingSamples\CodeSample1.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="CodeParsingSamples\CodeSample4.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="CodeParsingSamples\CodeSample3.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -36,9 +39,13 @@
     <Compile Remove="CodeParsingSamples\CodeSample1.cs" />
     <Compile Remove="CodeParsingSamples\CodeSample2.cs" />
     <Compile Remove="CodeParsingSamples\CodeSample3.cs" />
+    <Compile Remove="CodeParsingSamples\CodeSample4.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Update="CodeParsingSamples\CodeSample1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="CodeParsingSamples\CodeSample4.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="CodeParsingSamples\CodeSample3.txt">
