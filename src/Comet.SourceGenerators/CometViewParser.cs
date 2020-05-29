@@ -11,7 +11,6 @@ namespace Comet.SourceGenerators
 	{
 		public IEnumerable<ClassObject> ParseCode(string source)
 		{
-
 			var tree = CSharpSyntaxTree.ParseText(source);
 			var root = tree.GetRoot() as CompilationUnitSyntax;
 			var classes = root.Members.OfType<ClassDeclarationSyntax>();
@@ -41,10 +40,7 @@ namespace Comet.SourceGenerators
 				return;
 			}
 			//We found a method with  [Body] !!!!
-			var foundItems = new List<IdentifierNameSyntax>();
 			var body = md.Body?.Statements.Cast<SyntaxNode>().ToList() ?? new List<SyntaxNode> { md.ExpressionBody?.Expression };
-			var objectCreations = new List<ObjectCreation>();
-
 			foreach (var node in body)
 			{
 				ParseNode(node, classObject);
