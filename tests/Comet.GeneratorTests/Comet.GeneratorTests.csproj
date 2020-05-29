@@ -22,36 +22,36 @@
     <ProjectReference Include="..\..\src\Comet.SourceGenerators\Comet.SourceGenerators.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CodeParsingSamples\CodeSample1.cs">
+    <None Include="CodeParsingSamples\Attribute_ExpressionBodied.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="CodeParsingSamples\CodeSample4.cs">
+    <None Include="CodeParsingSamples\Constructor_ExpressionBodied.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="CodeParsingSamples\CodeSample3.cs">
+    <None Include="CodeParsingSamples\Constructor_StatementBodied.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="CodeParsingSamples\CodeSample2.cs">
+    <None Include="CodeParsingSamples\Attribute_StatementBodied.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="CodeParsingSamples\CodeSample1.cs" />
-    <Compile Remove="CodeParsingSamples\CodeSample2.cs" />
-    <Compile Remove="CodeParsingSamples\CodeSample3.cs" />
-    <Compile Remove="CodeParsingSamples\CodeSample4.cs" />
+    <Compile Remove="CodeParsingSamples\Attribute_ExpressionBodied.cs" />
+    <Compile Remove="CodeParsingSamples\Attribute_StatementBodied.cs" />
+    <Compile Remove="CodeParsingSamples\Constructor_ExpressionBodied.cs" />
+    <Compile Remove="CodeParsingSamples\Constructor_StatementBodied.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="CodeParsingSamples\CodeSample1.txt">
+    <None Update="CodeParsingSamples\Attribute_ExpressionBodied.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="CodeParsingSamples\CodeSample4.txt">
+    <None Update="CodeParsingSamples\Constructor_ExpressionBodied.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="CodeParsingSamples\CodeSample3.txt">
+    <None Update="CodeParsingSamples\Constructor_StatementBodied.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="CodeParsingSamples\CodeSample2.txt">
+    <None Update="CodeParsingSamples\Attribute_StatementBodied.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
