@@ -109,9 +109,15 @@ namespace Comet.Skia.WPF
 
 		private void OnMouseMove(object sender, MouseEventArgs evt)
 		{
-			if (!_inTouch) return;
 			evt.Handled = true;
-			_controlDelegate?.DragInteraction(GetViewPoints(evt));
+			if (_inTouch)
+			{
+				_controlDelegate?.DragInteraction(GetViewPoints(evt));
+			}
+			else
+			{
+				_controlDelegate?.HoverInteraction(GetViewPoints(evt));
+			}
 		}
 
 		private void OnMouseLeave(object sender, MouseEventArgs evt)

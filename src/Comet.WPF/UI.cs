@@ -44,7 +44,7 @@ namespace Comet.WPF
 			Device.BitmapService = new WPFBitmapService();
 
 			ThreadHelper.JoinableTaskContext = new Microsoft.VisualStudio.Threading.JoinableTaskContext();
-			ThreadHelper.SetFireOnMainThread( a => Application.Current.Dispatcher.Invoke(a));
+			ThreadHelper.SetFireOnMainThread( a => Application.Current?.Dispatcher?.Invoke(a));
 
 			ListView.HandlerSupportsVirtualization = false;
 		}
